@@ -14,12 +14,12 @@ if (config.USE_LOG_FILE) {
         level: "error",
         maxsize: 1024 * 1024,
         maxFiles: 1,
-      }),
+      } as any),
       new transports.File({
         filename: path.resolve("logs/logger.log"),
         maxsize: 1024 * 1024,
         maxFiles: 1,
-      }),
+      } as any),
     ];
   } catch (error) {
     console.error("Failed to initialize log files. Logging to a file will be skipped.", error);
@@ -71,7 +71,7 @@ if (process.env.NODE_ENV !== "production") {
     logger.add(
       new transports.Console({
         format: format.combine(format.colorize(), consoleFormat),
-      }),
+      } as any),
     );
   } catch (error) {
     console.error("Failed to add console transport. Console logging will be skipped.", error);
